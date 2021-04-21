@@ -30,6 +30,9 @@ class order:
         matched_all_lines = len(promotion.lines) > 0
         for line in promotion.lines:
             found_lines = [x for x in self.lines if x.SKU is line.SKU]
+            if not found_lines:
+                return False
+
             if len(found_lines) > 1:
                 total = reduce(lambda a,b: a.quantity + b.quantity, found_lines)
             else:

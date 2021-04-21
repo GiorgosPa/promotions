@@ -16,7 +16,8 @@ class order:
 
         observer = promotion_observer()
         for promotion in observer.promotions:
-            self._apply_promotion(promotion)
+            while self._apply_promotion(promotion):
+                pass
 
         for line in self.lines:
             total += line.SKU.price * line.quantity
